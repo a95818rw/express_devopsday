@@ -1,0 +1,41 @@
+<html lang="en"><head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Login</title>
+
+</head>
+
+<body>
+
+<div class="text-center">
+  <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+</div>
+
+
+<form action="/login/confirm" method="post">
+
+  <div>
+      <input type="account" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="請輸入帳號" name="name">
+  </div>
+  <div>
+      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="pwd">
+  </div>
+  
+  <input type="submit" value="登入">
+  <hr>
+  
+  <% if(status == "error") {%>
+    <h1>帳號或密碼錯誤!</h1>
+  <% } %>
+
+</form>
+
+
+
+
+</body></html>
