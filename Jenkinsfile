@@ -13,9 +13,10 @@ pipeline {
                 sh "npm test"
             }
         }
-        stage('Deploy') {
+        stage('Upload') {
             steps {
-                echo 'Deploying....'
+                sh "docker tag expressdevopsday a95818rw/expressdevopsday"
+                sh "docker push a95818rw/expressdevopsday"
             }
         }
     }
