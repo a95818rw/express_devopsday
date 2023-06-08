@@ -15,7 +15,8 @@ pipeline {
         }
         stage('Upload') {
             steps {
-                sh "docker tag expressdevopsday a95818rw/expressdevopsday"
+                sh "now=$(date +%m/%d-%H%M%S)"
+                sh "docker tag expressdevopsday a95818rw/expressdevopsday:$now"
                 sh "docker push a95818rw/expressdevopsday"
             }
         }
