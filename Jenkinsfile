@@ -19,12 +19,12 @@ pipeline {
             }
             steps {
                 sh "docker tag expressdevopsday a95818rw/expressdevopsday:${env.now}"
-                sh "docker push a95818rw/expressdevopsday"
+                sh "docker push a95818rw/expressdevopsday:${env.now}"
             }
         }
     }
 }
 
 def getTodayString() {
-	return Calendar.getInstance().getTime().format('yyyyMMdd', TimeZone.getTimeZone('Asia/Taipei'))
+	return Calendar.getInstance().getTime().format('yyyyMMddHHmm', TimeZone.getTimeZone('Asia/Taipei'))
 }
