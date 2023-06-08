@@ -18,7 +18,7 @@ pipeline {
                 now = getTodayString()
             }
             steps {
-                sh "docker tag expressdevopsday a95818rw/expressdevopsday:${env.TODAY}"
+                sh "docker tag expressdevopsday a95818rw/expressdevopsday:${env.now}"
                 sh "docker push a95818rw/expressdevopsday"
             }
         }
