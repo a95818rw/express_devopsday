@@ -14,11 +14,17 @@ pipeline {
             }
         }
         stage('Upload') {
+            environment {
+                now = getTodayString()
+            }
             steps {
-                sh "now=$(date +%m/%d-%H%M%S)"
-                sh "docker tag expressdevopsday a95818rw/expressdevopsday:$now"
+                sh "docker tag expressdevopsday a95818rw/expressdevopsday:${env.TODAY}"
                 sh "docker push a95818rw/expressdevopsday"
             }
         }
     }
+}
+
+def getTodayString() {
+	return Calendar.getInstance().getTime().format('yyyyMMdd', TimeZone.getTimeZone('Asia/Taipei'))
 }
