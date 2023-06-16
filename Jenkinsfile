@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        now = getTodayString()
+    }
     stages {
         stage('Build') {
             steps {
@@ -14,18 +16,12 @@ pipeline {
             }
         }
         stage('Upload') {
-            environment {
-                now = getTodayString()
-            }
             steps {
                 sh "docker tag expressdevopsday a95818rw/expressdevopsday:${env.now}"
                 sh "docker push a95818rw/expressdevopsday:${env.now}"
             }
         }
         stage('Deploy') {
-            environment {
-                now = getTodayString()
-            }
             steps {
                 sh "git clone https://github.com/a95818rw/kube_config_devopsday.git"
                 sh "helm upgrade express --debug ./kube_config_devopsday --set image.tag=${env.now}"
