@@ -22,6 +22,15 @@ pipeline {
                 sh "docker push a95818rw/expressdevopsday:${env.now}"
             }
         }
+        stage('Deploy') {
+            environment {
+                now = getTodayString()
+            }
+            steps {
+                sh "git clone https://github.com/a95818rw/kube_config_devopsday.git"
+                sh "helm upgrade express --debug ./kube_config_devopsday --set image.tag=${env.now}"
+            }
+        }
     }
 }
 
