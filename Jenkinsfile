@@ -25,6 +25,7 @@ pipeline {
             steps {
                 sh "git clone https://github.com/a95818rw/kube_config_devopsday.git"
                 sh "helm upgrade express --debug ./kube_config_devopsday --set image.tag=${env.now}"
+                sh "kubectl rollout status deployment express --watch"
             }
         }
     }
